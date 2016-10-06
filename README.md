@@ -6,4 +6,4 @@
 
 [![codecov.io](http://codecov.io/github/oxinabox/Expr2LaTeX.jl/coverage.svg?branch=master)](http://codecov.io/github/oxinabox/Expr2LaTeX.jl?branch=master)
 
-Checkout [the IJulia Notebook for the Demo](demo.ipynb)
+Checkout [the IJulia Notebook for the Demo](http://nbviewer.jupyter.org/github/oxinabox/Expr2LaTeX.jl/blob/master/demo.ipynb)
