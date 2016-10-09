@@ -63,8 +63,11 @@ end
 
 to_math(::Val{:hcat},row...) = to_math_matrix(row)
 function to_math_matrix(rows...)
-    math_rows = (MathExpressionFragment[to_math(r) for r in row.args]' for row in rows)
-    MathMatrix(vcat(math_rows...))
+	function math_row(row)
+		row_vec = MathExpressionFragment[to_math(r) for r in row.args]
+		permutedims(row_vec[:,:], (2,1))	 
+	end
+    MathMatrix(vcat(map(math_row, rows)...))
 end
 
 

@@ -1,5 +1,5 @@
 using Expr2LaTeX
 using Base.Test
 
-# write your own tests here
-@test 1 == 2
+include("julia2math.jl")
+
