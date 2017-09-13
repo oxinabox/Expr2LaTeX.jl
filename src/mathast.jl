@@ -2,35 +2,34 @@
 #######################
 # MathAST Definitions 
 
-abstract MathExpressionFragment
+abstract type MathExpressionFragment end
 
-immutable MathSequence <:MathExpressionFragment
+struct MathSequence <:MathExpressionFragment
     fragments::Vector{MathExpressionFragment}
 end
 
 
-typealias MathSymbolInner Union{Base.BitInteger.types..., Float16, Float32, Float64, Symbol} 
-immutable MathSymbol{T<:MathSymbolInner} <: MathExpressionFragment
+const MathSymbolInner = Union{Number, Symbol}
+struct MathSymbol{T<:MathSymbolInner} <: MathExpressionFragment
     sym::T
 end
 
-immutable MathFrac <: MathExpressionFragment
+struct MathFrac <: MathExpressionFragment
     numer::MathExpressionFragment
     denom::MathExpressionFragment
 end
 
-immutable MathSuperscript <: MathExpressionFragment
+struct MathSuperscript <: MathExpressionFragment
     base::MathExpressionFragment
     expo::MathExpressionFragment
 end
 
-immutable MathFunctionCall <: MathExpressionFragment
+struct MathFunctionCall <: MathExpressionFragment
     fname::Symbol
-    #args::Vector{MathExpressionFragment}
     arg::MathSequence
 end
 
-immutable MathMatrix <: MathExpressionFragment
+struct MathMatrix <: MathExpressionFragment
     mat::Matrix{MathExpressionFragment}
 end
 
