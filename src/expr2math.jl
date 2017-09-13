@@ -27,9 +27,20 @@ function MathSequence(v_vs, binop)
 end
 
 
-to_math(sym::MathSymbolInner) = MathSymbol(sym)
-to_math{sym}(::Val{sym})= MathSymbol(sym)
 
+to_math{sym}(::Val{sym})= to_math(sym)
+to_math(sym::Number) = MathSymbol(sym)
+function to_math(sym::Symbol)
+    sym_str = String(sym)
+    frags = split(String(sym), "_")
+    if length(frags) == 1
+        MathSymbol(sym)
+    else
+        base = Symbol(frags[1])
+        sub = Symbol(join(frags[2:end], ","))
+        MathSubscript(base, sub)
+    end
+end
 
 function to_math(::Val{:call}, v_binop::Union{(Val{binop} for binop in binops)...}, vs...)
     #Binary Operators: the julia paster rolls `1+2+3` into (+,(1,2,3))

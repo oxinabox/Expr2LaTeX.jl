@@ -12,6 +12,10 @@
     @test to_latex(to_math(:(f(x,y)))) == "f(x ,  y)" #Not sure on the spacing here
     @test to_latex(to_math(:(sin(x)))) == "\\mathrm{sin}(x)"
     
+    @test to_latex(to_math(:(a_b))) == "a_{b}"
+    @test to_latex(to_math(:(a_bc))) == "a_{bc}"
+    @test to_latex(to_math(:(a_b_c))) == "a_{b,c}"
+    
     @test to_latex(to_math(:([1,2,3]))) == "\\left[\\begin{array}{ccc}\n1\\\\2\\\\3\n\\end{array}\\right]"
     @test to_latex(to_math(:([1;2;3]))) == "\\left[\\begin{array}{ccc}\n1\\\\2\\\\3\n\\end{array}\\right]"
     @test to_latex(to_math(:([1 10 100;2 20 200])))  == "\\left[\\begin{array}{cc}\n1 & 10 & 100\\\\2 & 20 & 200\n\\end{array}\\right]"

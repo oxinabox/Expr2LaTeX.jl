@@ -24,6 +24,11 @@ struct MathSuperscript <: MathExpressionFragment
     expo::MathExpressionFragment
 end
 
+struct MathSubscript <: MathExpressionFragment
+    base::Symbol
+    sub::Symbol
+end
+
 struct MathFunctionCall <: MathExpressionFragment
     fname::Symbol
     arg::MathSequence

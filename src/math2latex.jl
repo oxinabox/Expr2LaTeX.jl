@@ -16,6 +16,11 @@ function to_latex(x::MathSuperscript)
     to_latex(x.base) * "^" * latex_brace(to_latex(x.expo))
 end
 
+function to_latex(x::MathSubscript)
+    to_latex(x.base) * "_" * latex_brace(to_latex(x.sub))
+end
+
+
 function to_latex(x::MathFrac)
     "\\frac" * latex_brace(to_latex(x.numer)) * latex_brace(to_latex(x.denom))
 end
