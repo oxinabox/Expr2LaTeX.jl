@@ -3,6 +3,7 @@
     @test to_latex(to_math(:(2))) == "2"
     @test to_latex(to_math(:(20^30))) == "20^{30}"
     @test to_latex(to_math(:(1+1))) == "(1 + 1)"
+    @test to_latex(to_math(:(1*1*3))) == "(1 * 1 * 3)"
     @test to_latex(to_math(:(2^(1+1)))) == "2^{(1 + 1)}"
     @test to_latex(to_math(:(1+(2+3)))) == "(1 + (2 + 3))"
     @test to_latex(to_math(:(1/2))) == "\\frac{1}{2}"

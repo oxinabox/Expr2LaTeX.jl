@@ -5,7 +5,7 @@
 const binops_renames =Dict( :(<=) => "\\le",
                             :(>=) => "\\ge",
                             :in   => "\\in")
-const binops = [Symbol.(split("+ - < > ∈ ≈"))..., keys(binops_renames)...]
+const binops = [Symbol.(split("+ - < > ∈ ≈ *"))..., keys(binops_renames)...]
 
 
 val_or_expr(x::Expr) = x
