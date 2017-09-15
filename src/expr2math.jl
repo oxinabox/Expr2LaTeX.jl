@@ -47,6 +47,13 @@ function to_math(::Val{:call}, v_binop::Union{(Val{binop} for binop in binops)..
     MathSequence(vs, v_binop)
 end
 
+
+# Uniary minux
+function to_math(::Val{:call}, ::Val{:-}, v)
+    # HACK: say it is a function call
+    MathFunctionCall(:-, MathSequence([to_math(v)]))
+end
+
 function to_math(::Val{:call}, ::Val{:^}, v_base, v_expo)
     MathSuperscript(to_math(v_base), to_math(v_expo))
 end

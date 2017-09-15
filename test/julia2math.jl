@@ -22,4 +22,6 @@
     #@test to_latex(to_math(:())) == ""
 
     @test to_latex(to_math(:(exp(a+b)))) == "\\mathrm{exp}(a + b)"
+    
+    @test to_latex(to_math(:(-(a+b)))) == "-(a + b)"
 end
