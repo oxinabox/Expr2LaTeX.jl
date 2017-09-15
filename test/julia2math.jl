@@ -20,4 +20,6 @@
     @test to_latex(to_math(:([1;2;3]))) == "\\left[\\begin{array}{ccc}\n1\\\\2\\\\3\n\\end{array}\\right]"
     @test to_latex(to_math(:([1 10 100;2 20 200])))  == "\\left[\\begin{array}{cc}\n1 & 10 & 100\\\\2 & 20 & 200\n\\end{array}\\right]"
     #@test to_latex(to_math(:())) == ""
+
+    @test to_latex(to_math(:(exp(a+b)))) == "\\mathrm{exp}(a + b)"
 end

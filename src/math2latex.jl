@@ -33,7 +33,7 @@ function to_latex(x::MathFunctionCall)
     name*to_latex(x.arg)
 end
 
-function to_latex(x::MathMatrix)  
+function to_latex(x::MathMatrix)
     desc = "c"^size(x.mat,1)
     rows = mapslices(y->join(y," & "), to_latex.(x.mat),2) |> vec
     latexmat = join(rows, "\\\\")
@@ -43,5 +43,13 @@ function to_latex(x::MathMatrix)
     \\end{array}\\right]"""
 end
 
-to_latex(x::MathSequence) = "(" * join(to_latex.(x.fragments)," ") * ")"
+function to_latex(x::MathSequence)
+    inner = join(to_latex.(x.fragments), " ")
+    if length(x) == 1 && typeof(first(x.fragments))==MathSequence
+       # skip outer-most brackets on Sequence that will be breackets internally anyway
+       x.fragments |> first |> to_latex
+    else
+        "(" * join(to_latex.(x.fragments)," ") * ")"
+    end
+end
 

@@ -4,10 +4,12 @@
 
 abstract type MathExpressionFragment end
 
+
+
 struct MathSequence <:MathExpressionFragment
     fragments::Vector{MathExpressionFragment}
 end
-
+Base.length(ms::MathSequence) = length(ms.fragments)
 
 const MathSymbolInner = Union{Number, Symbol}
 struct MathSymbol{T<:MathSymbolInner} <: MathExpressionFragment
