@@ -44,6 +44,7 @@ end
 
 function to_math(::Val{:call}, v_binop::Union{(Val{binop} for binop in binops)...}, vs...)
     #Binary Operators: the julia paster rolls `1+2+3` into (+,(1,2,3))
+    length(vs) < 2 && warn("attempting to parse for $(v_binop) with less than 2 args: $(vs)")
     MathSequence(vs, v_binop)
 end
 
