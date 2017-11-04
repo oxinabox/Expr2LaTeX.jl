@@ -1,6 +1,6 @@
 """Note: Does not (currently) escape all of latex."""
 function escape_latex(s::AbstractString)
-    replace(s,"_","\_")
+    s #not actually escaping anything  infact
 end
 
 latex_brace(x::AbstractString) = "{" * x * "}"
