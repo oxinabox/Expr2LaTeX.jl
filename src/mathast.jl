@@ -15,6 +15,7 @@ const MathSymbolInner = Union{Number, Symbol}
 struct MathSymbol{T<:MathSymbolInner} <: MathExpressionFragment
     sym::T
 end
+MathSymbol(s::AbstractString) = MathSymbol(Symbol(s))
 
 struct MathFrac <: MathExpressionFragment
     numer::MathExpressionFragment

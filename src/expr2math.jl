@@ -4,7 +4,8 @@
 
 const binops_renames =Dict( :(<=) => "\\le",
                             :(>=) => "\\ge",
-                            :in   => "\\in")
+                            :in   => "\\in",
+                            :±  => "\\pm")
 const binops = [Symbol.(split("+ - < > ∈ ≈ *"))..., keys(binops_renames)...]
 
 
@@ -31,6 +32,10 @@ end
 to_math{sym}(::Val{sym})= to_math(sym)
 to_math(sym::Number) = MathSymbol(sym)
 function to_math(sym::Symbol)
+    if haskey(binops_renames, sym)
+        return MathSymbol(binops_renames[sym])
+    end
+
     sym_str = String(sym)
     frags = split(String(sym), "_")
     if length(frags) == 1
