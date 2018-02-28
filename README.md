@@ -25,3 +25,9 @@ and then you can use Expr2LaTeX to `render` it.
 
 
 ![SymEngine Screenshot](SymEngineDemo.png)
+
+
+## See also
+ 
+[Latexify.jl](https://github.com/korsbo/Latexify.jl),
+same rough idea, but taken to the next level.
