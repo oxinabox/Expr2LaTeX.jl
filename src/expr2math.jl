@@ -29,7 +29,7 @@ end
 
 
 
-to_math{sym}(::Val{sym})= to_math(sym)
+to_math(::Val{sym}) where {sym}= to_math(sym)
 to_math(sym::Number) = MathSymbol(sym)
 function to_math(sym::Symbol)
     if haskey(binops_renames, sym)
@@ -68,7 +68,7 @@ function to_math(::Val{:call}, ::Val{:/}, v_base, v_expo)
     MathFrac(to_math(v_base), to_math(v_expo))
 end
 
-function to_math{func}(::Val{:call}, v_func::Val{func}, v_args...)
+function to_math(::Val{:call}, v_func::Val{func}, v_args...) where func
     MathFunctionCall(func, MathSequence(v_args, Symbol(", ")))
 end
 
