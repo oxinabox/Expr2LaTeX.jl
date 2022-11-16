@@ -1,5 +1,10 @@
 # Expr2LaTeX
 
+⚠️Deprecated in favor of [Latexify.jl](https://github.com/korsbo/Latexify.jl)⚠️.
+
+---
+
+
 [![Build Status](https://travis-ci.org/oxinabox/Expr2LaTeX.jl.svg?branch=master)](https://travis-ci.org/oxinabox/Expr2LaTeX.jl)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/mi33drp57hjuiiua/branch/master?svg=true)](https://ci.appveyor.com/project/oxinabox/expr2latex-jl/branch/master)
@@ -26,8 +31,3 @@ and then you can use Expr2LaTeX to `render` it.
 
 ![SymEngine Screenshot](SymEngineDemo.png)
 
-
-## See also
- 
-[Latexify.jl](https://github.com/korsbo/Latexify.jl),
-same rough idea, but taken to the next level.
